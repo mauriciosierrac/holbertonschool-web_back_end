@@ -1,50 +1,69 @@
 export default class HolbertonCourse {
-    constructor(name, length, students) {
-      // Verify attribute types during obj creation
-      if (Object.getPrototypeOf(name) !== String.prototype) throw TypeError('name must be a string');
-      if (Object.getPrototypeOf(length) !== Number.prototype) throw TypeError('length must be a number');
-      if (Object.getPrototypeOf(students) !== Array.prototype) throw TypeError('students must be an array of strings');
-      students.forEach((student) => {
-        if (Object.getPrototypeOf(student) !== String.prototype) throw TypeError('students must be an array of strings');
-      });
-  
-      // Create objs
-      this._name = name;
-      this._length = length;
-      this._students = students;
+  constructor(name, length, students) {
+    if (typeof name !== 'string') {
+      throw TypeError('Name must be a string');
     }
-  
-    // Setters
-    set name(newName) {
-      if (Object.getPrototypeOf(newName) !== String.prototype) throw TypeError('name must be a string');
-      this._name = newName;
+    if (typeof length !== 'number') {
+      throw TypeError('Length must be a number');
     }
-  
-    set length(newLen) {
-      if (Object.getPrototypeOf(newLen) !== Number.prototype) throw TypeError('length must be a number');
-      this._length = newLen;
+
+    if (typeof students !== 'object') {
+      throw new TypeError('Students must be an array of strings');
     }
-  
-    set students(newStudents) {
-      if (Object.getPrototypeOf(newStudents) !== Array.prototype) throw TypeError('students must be an array');
-      newStudents.forEach((student) => {
-        if (Object.getPrototypeOf(student) !== String.prototype) throw TypeError('students must be an array of strings');
-      });
-      this._students = newStudents;
+    if (typeof students === 'object') {
+      for (const i in students) {
+        if (typeof i !== 'string') {
+          throw new TypeError('Students must be an array of strings');
+        }
+      }
     }
-  
-    // Getters
-  
-    get name() {
-      return this._name;
-    }
-  
-    get length() {
-      return this._length;
-    }
-  
-    get students() {
-      return this._students;
-    }
+
+    this._name = name;
+    this._length = length;
+    this._students = students;
   }
-  
+
+  // _name
+  get name() {
+    return this._name;
+  }
+
+  set name(name) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    this._name = name;
+  }
+
+  // _legth
+  get length() {
+    return this._length;
+  }
+
+  set length(length) {
+    if (typeof (length) !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    this._length = length;
+  }
+
+  // _students
+  get students() {
+    return this._students;
+  }
+
+  set students(value) {
+    /*eslint-disable */
+
+        if (typeof value !== 'object') {
+            throw new TypeError('Students must be an array of strings');
+        } else {
+            for (const i in value) {
+                if (typeof i !== 'string') {
+                    throw new TypeError('Students must be an array of strings');
+                }
+                this._students = value;
+            }
+        }
+    }
+}

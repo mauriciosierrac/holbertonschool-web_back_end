@@ -6,7 +6,7 @@ describe('GET /', () => {
   it('endpoint: GET /', (done) => {
     const call = {
       url: 'http://localhost:7865',
-      method: 'GET'
+      method: 'GET',
     };
     request(call, (error, response, body) => {
       chai.expect(response.statusCode).to.equal(200);
@@ -20,7 +20,7 @@ describe('GET /cart/:id', () => {
   it('endpoint: GET /cart/:id', (done) => {
     const call = {
       url: 'http://localhost:7865/cart/12',
-      method: 'GET'
+      method: 'GET',
     };
     request(call, (error, response, body) => {
       chai.expect(response.statusCode).to.equal(200);
@@ -34,7 +34,7 @@ describe('GET /cart/:isNaN', () => {
   it('endpoint: GET /cart/:isNaN', (done) => {
     const call = {
       url: 'http://localhost:7865/cart/anything',
-      method: 'GET'
+      method: 'GET',
     };
     request(call, (error, response, body) => {
       chai.expect(response.statusCode).to.equal(404);
@@ -47,7 +47,7 @@ describe('GET /available_payments', () => {
   it('endpoint: GET /available_payments', (done) => {
     const call = {
       url: 'http://localhost:7865/available_payments',
-      method: 'GET'
+      method: 'GET',
     };
     request(call, (error, response, body) => {
       chai.expect(response.statusCode).to.equal(200);
@@ -65,8 +65,8 @@ describe('POST /login', () => {
       url: 'http://localhost:7865/login',
       method: 'POST',
       json: {
-        userName: 'Javi'
-      }
+        userName: 'Javi',
+      },
     };
     request(call, (error, response, body) => {
       chai.expect(response.statusCode).to.equal(200);

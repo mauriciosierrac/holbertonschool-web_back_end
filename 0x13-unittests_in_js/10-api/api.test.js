@@ -178,24 +178,25 @@ describe('Integration Testing', () => {
       const options = {
         url: 'http://localhost:7865/login',
         method: 'POST',
-        json: {
+        body: {
           userName: 'Betty',
         },
       };
 
       request(options, function (error, response, body) {
+        console.log(options)
         expect(response.statusCode).to.equal(200);
         expect(body).to.equal('Welcome Betty');
         done();
       });
     });
-  });
-
-  describe('POST /login with no body', () => {
+  }); 
+  
+   describe('POST /login with no body', () => {
     it('Responds with 200 and correct name Undefined', (done) => {
       const options = {
         url: 'http://localhost:7865/login',
-        method: 'POST',
+        method: 'POST'
       };
 
       request(options, function (error, response, body) {

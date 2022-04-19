@@ -178,7 +178,7 @@ describe('Integration Testing', () => {
       const options = {
         url: 'http://localhost:7865/login',
         method: 'POST',
-        body: {
+        json: {
           userName: 'Betty',
         },
       };

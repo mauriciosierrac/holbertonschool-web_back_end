@@ -184,7 +184,6 @@ describe('Integration Testing', () => {
       };
 
       request(options, function (error, response, body) {
-        console.log(options)
         expect(response.statusCode).to.equal(200);
         expect(body).to.equal('Welcome Betty');
         done();
